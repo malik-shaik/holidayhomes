@@ -5,6 +5,7 @@ module.exports = () => {
   try {
     mongoose.connect(mongoDbURL, {
       useNewUrlParser: true,
+      useCreateIndex: true,
       useUnifiedTopology: true,
     });
     console.log("# ********** Database connected successfully ********** #");
