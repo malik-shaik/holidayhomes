@@ -1,24 +1,32 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+
 import { useForm } from "react-hook-form"; // library for frontend validation
+import Axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
   const { register, handleSubmit, errors } = useForm();
-
+  const history = useHistory();
+  const [err, setErr] = useState(null);
+  // const { token, setAuth } = useContext(AuthContext);
   const loginHandler = async (formData) => {
-    const options = {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-Type": "application/json" },
-    };
-    const res = await fetch("http://localhost:5050/user/login", options);
-    const data = await res.json();
-    console.log("response....", data);
+    const url = "http://localhost:5050/user/login";
+    const config = { headers: { "Content-Type": "application/json" } };
+    const body = JSON.stringify(formData);
+    const res = await Axios.post(url, body, config);
+    if (res.data.error) setErr(res.data.error);
+    else {
+      localStorage.setItem("token", res.data.token);
+      // setAuth(res.data.token);
+      history.push("/createhome");
+    }
   };
 
   return (
     <div>
       <h2>Login</h2>
-
+      {err && <div style={{ color: "#bb0000" }}>{err}</div>}
       <form onSubmit={handleSubmit(loginHandler)}>
         <input
           type="text"
