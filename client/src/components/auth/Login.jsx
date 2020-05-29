@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form"; // library for frontend validation
 import Axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
+// uncomment this...
+
 const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
@@ -21,7 +23,6 @@ const Login = () => {
     console.log(res.data.error);
     if (res.data.error) setErr(res.data.error);
     else {
-      // localStorage.setItem("token", res.data.token);
       setAuth(res.data);
       history.push("/createhome");
     }

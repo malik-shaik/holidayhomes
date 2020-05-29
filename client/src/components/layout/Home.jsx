@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
+
+// uncomment this...
+
 const Home = () => {
   const [home, setHome] = useState(undefined);
   const { id } = useParams();

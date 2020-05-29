@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import Axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
+// uncomment this...
+
 const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
   const [err, setErr] = useState(null);

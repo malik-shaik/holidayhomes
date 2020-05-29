@@ -9,13 +9,14 @@ import Login from "./components/auth/Login";
 import Home from "./components/layout/Home";
 import Navbar from "./components/layout/Navbar";
 
+// uncomment this...
+
 function App() {
   return (
     <AuthProvider>
       <Router>
         <div className="App">
           <Navbar />
-
           <Switch>
             <Route exact path="/" component={Homes} />
             <Route exact path="/home/:id" component={Home} />

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
+// uncomment this...
+
 const CreateHome = () => {
   const { register, handleSubmit, errors } = useForm();
   const [images, setImages] = useState([]);
