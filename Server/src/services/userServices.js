@@ -42,6 +42,6 @@ module.exports.registerService = async (data) => {
     return { user: newUser, token };
   } catch (error) {
     console.log("ErrorIn: RegisterService :", error);
-    return error.message;
+    return { error: error.message };
   }
 };

@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+
 import { useForm } from "react-hook-form";
+import Axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
+  const [err, setErr] = useState(null);
+  const history = useHistory();
+  const { setAuth } = useContext(AuthContext);
 
   const signupHandler = async (formData) => {
-    const options = {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-Type": "application/json" },
-    };
-    const res = await fetch("http://localhost:5050/user/register", options);
-    const data = await res.json();
-    console.log("response....", data);
+    const url = "http://localhost:5050/user/register";
+    const config = { headers: { "Content-Type": "application/json" } };
+    const body = JSON.stringify(formData);
+    const res = await Axios.post(url, body, config);
+    if (res.data.error) setErr(res.data.error);
+    else {
+      setAuth(res.data);
+      history.push("/createhome");
+    }
   };
 
   return (
     <div>
       <h2>Signup</h2>
+      {err && <div style={{ color: "#bb0000" }}>{err}</div>}
 
       <form onSubmit={handleSubmit(signupHandler)}>
         <input

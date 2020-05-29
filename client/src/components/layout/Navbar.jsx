@@ -1,20 +1,15 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
-  const [tokn, setToken] = useState(undefined);
-
-  // const { token } = useContext(AuthContext);
+  const { isLoggedIn, user, clearAuth } = useContext(AuthContext);
 
   useEffect(() => {
-    // console.log("token...", token);
-  }, []);
+    if (!localStorage.getItem("token")) clearAuth(); // eslint-disable-next-line
+  }, [isLoggedIn]);
 
-  const logoutHandler = () => {
-    localStorage.removeItem("token");
-    setToken(undefined);
-  };
+  const logoutHandler = () => clearAuth();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark mb-4">
@@ -27,8 +22,9 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
-            {tokn ? (
+            {isLoggedIn ? (
               <li className="nav-item">
+                <h5>{user.name}</h5>
                 <Link className="nav-link" to={"/"} onClick={logoutHandler}>
                   Logout
                 </Link>

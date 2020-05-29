@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -8,8 +8,6 @@ import CreateHome from "./components/auth/CreateHome";
 import Login from "./components/auth/Login";
 import Home from "./components/layout/Home";
 import Navbar from "./components/layout/Navbar";
-
-// import "./App.css";
 
 function App() {
   return (

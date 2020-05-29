@@ -9,16 +9,20 @@ const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
   const [err, setErr] = useState(null);
-  // const { token, setAuth } = useContext(AuthContext);
+  const { setAuth } = useContext(AuthContext);
+
   const loginHandler = async (formData) => {
     const url = "http://localhost:5050/user/login";
     const config = { headers: { "Content-Type": "application/json" } };
     const body = JSON.stringify(formData);
     const res = await Axios.post(url, body, config);
+    console.log(res.status);
+    console.log(res.data);
+    console.log(res.data.error);
     if (res.data.error) setErr(res.data.error);
     else {
-      localStorage.setItem("token", res.data.token);
-      // setAuth(res.data.token);
+      // localStorage.setItem("token", res.data.token);
+      setAuth(res.data);
       history.push("/createhome");
     }
   };

@@ -11,7 +11,7 @@ const Home = () => {
       const res = await Axios.get(url);
       setHome(res.data);
     }
-    fetchHome();
+    fetchHome(); // eslint-disable-next-line
   }, []);
 
   console.log(home);

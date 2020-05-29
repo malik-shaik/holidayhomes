@@ -28,9 +28,7 @@ const CreateHome = () => {
     if (res.data.message) setFeedback(res.data.message);
   };
 
-  const handleCreateHome = () => {
-    setFeedback(undefined);
-  };
+  const handleCreateHome = () => setFeedback(undefined);
 
   return (
     <div>

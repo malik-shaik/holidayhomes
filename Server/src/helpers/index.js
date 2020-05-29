@@ -7,7 +7,6 @@ const { check, validationResult } = require("express-validator");
 
 module.exports.createJWT = async (userid) => {
   const payload = { id: userid };
-  console.log(jwtSecret);
   return await JWT.sign(payload, jwtSecret, { expiresIn: 360000 });
 };
 
