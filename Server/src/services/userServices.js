@@ -2,7 +2,7 @@ const Query = require("../database/queries");
 const helpMethods = require("../helpers");
 
 // ##########################################################################
-// Login Service
+// Login Service.
 exports.loginService = async (data) => {
   try {
     const user = await Query.getUserByEmail(data.email);
