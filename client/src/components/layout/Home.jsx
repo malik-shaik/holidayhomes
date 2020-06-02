@@ -24,7 +24,6 @@ const Home = () => {
               {home ? (
                 <div>
                   <h3 className="font-weight-light">{home.name}</h3>
-<<<<<<< HEAD
                   <div className="d-flex">
                     {home.images.map((image) => (
                       <img
@@ -34,13 +33,6 @@ const Home = () => {
                       />
                     ))}
                   </div>
-=======
-                  <img
-                    className="d-block w-100 "
-                    src={home.images[0].imageLink}
-                    alt="img"
-                  />
->>>>>>> 0010e7f9ba726c944625165d478abec47dc21321
                   <p className="lead">Rent: {home.rent}</p>
                   <p className="lead">Address: {home.address}</p>
                 </div>
