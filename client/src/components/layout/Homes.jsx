@@ -19,16 +19,21 @@ const Homes = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-5">
-          {homes.map((home) => (
-            <Link key={home._id} to={`/home/${home._id}`}>
-              <img className="d-block h-30 w-100" src={home.images[0].imageLink} alt="img" />
-            </Link>
-          ))}
-        </div>
-        <div className="col-7">
-          {homes.map((home) => (
-            <div key={home._id} >
+        {homes.map((home) => (
+          <div
+            className="d-flex align-items-center shadow-lg bg-light mb-3 "
+            key={home._id}
+          >
+            <div className="col-5">
+              <Link key={home._id} to={`/home/${home._id}`}>
+                <img
+                  className="d-block h-30 w-100 m-4"
+                  src={home.images[0].imageLink}
+                  alt="img"
+                />
+              </Link>
+            </div>
+            <div className="col-7 ml-5">
               <h3>{home.name}</h3>
               <p>Rent: {home.rent}</p>
               <p>Address: {home.address}</p>
@@ -36,11 +41,10 @@ const Homes = () => {
                 <button className="btn btn-warning mt-2">See house</button>
               </Link>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
-
   );
 };
 

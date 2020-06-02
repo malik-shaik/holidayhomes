@@ -23,18 +23,22 @@ const Home = () => {
     <>
       <div className="masthead">
         <div className="container h-100">
-          <div class="row h-100 align-items-center">
+          <div className="row h-100 align-items-center">
             <div className="col-6 text-cente">
               {home ? (
                 <div>
                   <h3 className="font-weight-light">{home.name}</h3>
-                  <img className="d-block w-100" src={home.images[0].imageLink} alt="img" />
+                  <img
+                    className="d-block w-100 "
+                    src={home.images[0].imageLink}
+                    alt="img"
+                  />
                   <p className="lead">Rent: {home.rent}</p>
                   <p className="lead">Address: {home.address}</p>
                 </div>
               ) : (
-                  <h2>Loading....</h2>
-                )}
+                <h2>Loading....</h2>
+              )}
             </div>
           </div>
         </div>
