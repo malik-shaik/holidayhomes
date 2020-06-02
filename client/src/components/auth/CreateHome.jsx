@@ -31,74 +31,81 @@ const CreateHome = () => {
   const handleCreateHome = () => setFeedback(undefined);
 
   return (
-    <div>
-      <h2>Create Home</h2>
-      {feedback ? (
-        <div>
-          <h4>{feedback}</h4>
-          <button onClick={handleCreateHome}>Create new home</button>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit(submitHandler)}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Title"
-            ref={register({
-              required: "* Title must be minimum 2 charecters",
-              minLength: 3,
-              pattern: { value: /^[a-zA-Z\s]+$/ },
-            })}
-          />
-          {errors.name && (
-            <small className="err-msg">{errors.name.message}</small>
+    <div className="container mt-5">
+      <div className="auth-wrapper auth-inner">
+        <h2 className="text-center mb-3">Create Home</h2>
+        {feedback ? (
+          <div>
+            <h4>{feedback}</h4>
+            <button onClick={handleCreateHome}>Create new home</button>
+          </div>
+        ) : (
+            <form onSubmit={handleSubmit(submitHandler)}>
+              <div className="form-group">
+                <input
+                  className="form-control mb-2"
+                  type="text"
+                  name="name"
+                  placeholder="Title"
+                  ref={register({
+                    required: "* Title must be minimum 2 charecters",
+                    minLength: 3,
+                    pattern: { value: /^[a-zA-Z\s]+$/ },
+                  })}
+                />
+                {errors.name && (
+                  <small className="err-msg">{errors.name.message}</small>
+                )}
+
+                <input
+                  className="form-control mb-2"
+                  type="text"
+                  name="rent"
+                  placeholder="Rent"
+                  ref={register({
+                    required: true,
+                    minLength: 3,
+                    pattern: { value: /^[0-9]*$/ },
+                  })}
+                />
+                {errors.rent && <small>* Rent must be minimum 3 degits. </small>}
+
+                <input
+                  className="form-control mb-2"
+                  type="text"
+                  name="address"
+                  placeholder="Address"
+                  ref={register({
+                    required: true,
+                    minLength: 5,
+                    pattern: { value: /^[a-zA-Z\s]+$/ },
+                  })}
+                />
+                {errors.address && <small>* Incorrect address. </small>}
+
+                <input
+                  type="file"
+                  name="image1"
+                  placeholder="browse image"
+                  onChange={onChange}
+                  ref={register({ required: true })}
+                />
+                {errors.image && <small>* Please choose image. </small>}
+
+                <input
+                  type="file"
+                  name="image2"
+                  placeholder="browse image"
+                  onChange={onChange}
+                  ref={register({ required: true })}
+                />
+                {errors.image && <small>* Please choose image. </small>}
+
+                <button className="btn btn-warning btn-block mt-2">Create</button>
+              </div>
+            </form>
           )}
-
-          <input
-            type="text"
-            name="rent"
-            placeholder="Rent"
-            ref={register({
-              required: true,
-              minLength: 3,
-              pattern: { value: /^[0-9]*$/ },
-            })}
-          />
-          {errors.rent && <small>* Rent must be minimum 3 degits. </small>}
-
-          <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            ref={register({
-              required: true,
-              minLength: 5,
-              pattern: { value: /^[a-zA-Z\s]+$/ },
-            })}
-          />
-          {errors.address && <small>* Incorrect address. </small>}
-
-          <input
-            type="file"
-            name="image1"
-            placeholder="browse image"
-            onChange={onChange}
-            ref={register({ required: true })}
-          />
-          {errors.image && <small>* Please choose image. </small>}
-
-          <input
-            type="file"
-            name="image2"
-            placeholder="browse image"
-            onChange={onChange}
-            ref={register({ required: true })}
-          />
-          {errors.image && <small>* Please choose image. </small>}
-
-          <button>Create</button>
-        </form>
-      )}
+      </div>
     </div>
   );
 };

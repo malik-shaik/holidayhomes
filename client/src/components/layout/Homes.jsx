@@ -15,17 +15,30 @@ const Homes = () => {
   }, []);
 
   return (
-    <div>
-      All Homes
-      {homes.map((home) => (
-        <Link key={home._id} to={`/home/${home._id}`}>
-          <img src={home.images[0].imageLink} alt="img" />
-          <h3>{home.name}</h3>
-          <p>{home.rent}</p>
-          <p>{home.address}</p>
-        </Link>
-      ))}
+    <div className="container">
+      <div className="row">
+        <div className="col-5">
+          {homes.map((home) => (
+            <Link key={home._id} to={`/home/${home._id}`}>
+              <img className="d-block h-30 w-100" src={home.images[0].imageLink} alt="img" />
+            </Link>
+          ))}
+        </div>
+        <div className="col-7">
+          {homes.map((home) => (
+            <div key={home._id} >
+              <h3>{home.name}</h3>
+              <p>Rent: {home.rent}</p>
+              <p>Address: {home.address}</p>
+              <Link to={`/home/${home._id}`}>
+                <button className="btn btn-warning mt-2">See house</button>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
+
   );
 };
 

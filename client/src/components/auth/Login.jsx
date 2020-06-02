@@ -28,42 +28,49 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {err && <div style={{ color: "#bb0000" }}>{err}</div>}
-      <form onSubmit={handleSubmit(loginHandler)}>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          placeholder="Email"
-          ref={register({
-            required: true,
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            },
-          })}
-        />
-        {errors.email && <small>* Invalid email address </small>}
+    <div className="container mt-5">
+      <div className="auth-wrapper auth-inner">
+        <form onSubmit={handleSubmit(loginHandler)}>
+          {err && <div style={{ color: "#bb0000" }}>{err}</div>}
+          <h3>Login</h3>
+          <div className="form-group">
+            <label>Email</label>
 
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          ref={register({
-            required: true,
-            pattern: {
-              value: /^(?=.*\d)(?=.*[a-zA-Z]).{5,}$/,
-            },
-          })}
-        />
-        {errors.password && (
-          <small>* Minimum 5 alpha numberic charecters </small>
-        )}
+            <input className="form-control"
+              type="text"
+              id="email"
+              name="email"
+              ref={register({
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                },
+              })}
+            />
+            {errors.email && <small>* Invalid email address </small>}
+          </div>
+          <div className="form-group">
+            <label>Password</label>
 
-        <button>Login</button>
-      </form>
+            <input className="form-control"
+              type="password"
+              id="password"
+              name="password"
+              ref={register({
+                required: true,
+                pattern: {
+                  value: /^(?=.*\d)(?=.*[a-zA-Z]).{5,}$/,
+                },
+              })}
+            />
+            {errors.password && (
+              <small>* Minimum 5 alpha numberic charecters </small>
+            )}
+          </div>
+          <button className="btn btn-primary btn-form btn-block">Login</button>
+        </form>
+
+      </div>
     </div>
   );
 };
