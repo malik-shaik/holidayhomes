@@ -22,7 +22,9 @@ const Navbar = () => {
           </Link>
           {isLoggedIn && (
             <li className="nav-link">
-              <p className="logo">Welcome back, {user.name}!</p>
+              <p style={{ margin: "auto" }} className="logo">
+                Welcome back, {user.name}!
+              </p>
             </li>
           )}
         </div>
