@@ -1,7 +1,11 @@
 const Query = require("../database/queries");
 const helpMethods = require("../helpers");
 
+<<<<<<< HEAD
 // ########################################################################
+=======
+// ########################################################################
+>>>>>>> elaheh
 // Login Service.
 exports.loginService = async (data) => {
   try {
