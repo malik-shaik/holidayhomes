@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
 
-// uncomment this...
-
 const Home = () => {
   const [home, setHome] = useState(undefined);
   const { id } = useParams();
@@ -17,8 +15,6 @@ const Home = () => {
     fetchHome(); // eslint-disable-next-line
   }, []);
 
-  console.log(home);
-
   return (
     <>
       <div className="masthead">
@@ -28,13 +24,21 @@ const Home = () => {
               {home ? (
                 <div>
                   <h3 className="font-weight-light">{home.name}</h3>
-                  <img className="d-block w-100" src={home.images[0].imageLink} alt="img" />
+                  <div className="d-flex">
+                    {home.images.map((image) => (
+                      <img
+                        className="d-block w-100 mr-3"
+                        src={image.imageLink}
+                        alt="img"
+                      />
+                    ))}
+                  </div>
                   <p className="lead">Rent: {home.rent}</p>
                   <p className="lead">Address: {home.address}</p>
                 </div>
               ) : (
-                  <h2>Loading....</h2>
-                )}
+                <h2>Loading....</h2>
+              )}
             </div>
           </div>
         </div>
