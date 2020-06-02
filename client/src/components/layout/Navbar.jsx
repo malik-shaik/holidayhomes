@@ -16,22 +16,21 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark mb-4">
       <div className="container">
-        <h3>Holiday Homes</h3>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to={"/"}>
-                Home
+        <Link className="nav-link" to={"/"}><h4 className="logo">Holiday Homes</h4></Link>
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <Link className="nav-link" to={"/"}>
+              Home
               </Link>
+          </li>
+          {isLoggedIn ? (
+            <li className="nav-item">
+              <Link className="nav-link" to={"/"} onClick={logoutHandler}>
+                Logout
+              </Link>
+              <p className="logo">Welcome back, {user.name}!</p>
             </li>
-            {isLoggedIn ? (
-              <li className="nav-item">
-                <h5>{user.name}</h5>
-                <Link className="nav-link" to={"/"} onClick={logoutHandler}>
-                  Logout
-                </Link>
-              </li>
-            ) : (
+          ) : (
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to={"/login"}>
@@ -45,8 +44,7 @@ const Navbar = () => {
                 </li>
               </>
             )}
-          </ul>
-        </div>
+        </ul>
       </div>
     </nav>
   );
